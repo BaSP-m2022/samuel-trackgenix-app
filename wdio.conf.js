@@ -54,7 +54,7 @@ exports.config = {
         // maxInstances can get overwritten per capability. So if you have an in-house Selenium
         // grid with only 5 firefox instances available you can make sure that not more than
         // 5 instances get started at a time.
-        maxInstances: 5,
+        maxInstances: 1,
         //
         browserName: 'chrome',
         acceptInsecureCerts: true
@@ -135,7 +135,7 @@ exports.config = {
     reporters: ['spec',['allure', {outputDir: 'allure-results'}]],
 
 
-    
+
     //
     // Options to be passed to Jasmine.
     jasmineOpts: {
@@ -149,7 +149,7 @@ exports.config = {
             // do something
         }
     },
-    
+
     //
     // =====
     // Hooks
@@ -244,6 +244,21 @@ exports.config = {
      * @param {Boolean} result.passed    true if test has passed, otherwise false
      * @param {Object}  result.retries   informations to spec related retries, e.g. `{ attempts: 0, limit: 0 }`
      */
+     onComplete: function () {
+        const reportError = new Error('Could not generate Allure report');
+        const generation = allure(['generate', 'allure-results', '--clean']);
+        return new Promise((resolve, reject) => {
+          const generationTimeout = setTimeout(() => reject(reportError), 5000);
+          generation.on('exit', function (exitCode) {
+            clearTimeout(generationTimeout);
+            if (exitCode !== 0) {
+              return reject(reportError);
+            }
+            console.log('Allure report successfully generated');
+            resolve();
+          });
+        });
+      },
     afterTest: async function(test, context, { error, result, duration, passed, retries }) {
         if (!passed) {
             await browser.takeScreenshot();
