@@ -12,9 +12,4 @@ describe('open the admin page', () => {
     await expect(adminsPage.adminCreateButton).toBeClickable();
     await adminsPage.adminCreateButton.click();
   });
-  // it('should opeen the form to add an admin', async () => {
-  //   await expect(adminsPage.adminCreateButton).toBeDisplayed();
-  //   await expect(adminsPage.adminCreateButton).toBeClickable();
-  //   await adminsPage.adminCreateButton.click();
-  // });
 });
