@@ -111,7 +111,7 @@ exports.config = {
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
     services: ['chromedriver'],
-    
+
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
     // see also: https://webdriver.io/docs/frameworks
@@ -244,21 +244,21 @@ exports.config = {
      * @param {Boolean} result.passed    true if test has passed, otherwise false
      * @param {Object}  result.retries   informations to spec related retries, e.g. `{ attempts: 0, limit: 0 }`
      */
-     onComplete: function () {
-        const reportError = new Error('Could not generate Allure report');
-        const generation = allure(['generate', 'allure-results', '--clean']);
-        return new Promise((resolve, reject) => {
-          const generationTimeout = setTimeout(() => reject(reportError), 5000);
-          generation.on('exit', function (exitCode) {
-            clearTimeout(generationTimeout);
-            if (exitCode !== 0) {
-              return reject(reportError);
-            }
-            console.log('Allure report successfully generated');
-            resolve();
-          });
-        });
-      },
+    //  onComplete: function () {
+    //     const reportError = new Error('Could not generate Allure report');
+    //     const generation = allure(['generate', 'allure-results', '--clean']);
+    //     return new Promise((resolve, reject) => {
+    //       const generationTimeout = setTimeout(() => reject(reportError), 5000);
+    //       generation.on('exit', function (exitCode) {
+    //         clearTimeout(generationTimeout);
+    //         if (exitCode !== 0) {
+    //           return reject(reportError);
+    //         }
+    //         console.log('Allure report successfully generated');
+    //         resolve();
+    //       });
+    //     });
+    //   },
     afterTest: async function(test, context, { error, result, duration, passed, retries }) {
         if (!passed) {
             await browser.takeScreenshot();
