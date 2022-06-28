@@ -8,8 +8,6 @@
 # testing
 /coverage
 
-allure-results
-
 # production
 /build
 

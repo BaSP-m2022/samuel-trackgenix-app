@@ -1,6 +1,5 @@
-/* eslint-disable no-undef */
-// import allure from '@wdio/allure-reporter';
 const allure = require('@wdio/allure-reporter').default;
+
 exports.config = {
   //
   // ====================
@@ -134,23 +133,21 @@ exports.config = {
   // Test reporter for stdout.
   // The only one supported by default is 'dot'
   // see also: https://webdriver.io/docs/dot-reporter
-  reporters: [
-    'spec',
-    ['allure', { outputDir: 'allure-results', disableWebdriverScreenshotsReporting: false }]
-  ],
+  reporters: ['spec', ['allure', { outputDir: 'allure-results' }]],
 
   //
   // Options to be passed to Jasmine.
   jasmineOpts: {
     // Jasmine default timeout
-    defaultTimeoutInterval: 60000
+    defaultTimeoutInterval: 60000,
     //
     // The Jasmine framework allows interception of each assertion in order to log the state of the application
     // or website depending on the result. For example, it is pretty handy to take a screenshot every time
     // an assertion fails.
-    // expectationResultHandler: function (passed, assertion) {
-    // do something
-    // }
+    //eslint-disable-next-line
+    expectationResultHandler: function (passed, assertion) {
+      // do something
+    }
   },
 
   //
@@ -246,25 +243,23 @@ exports.config = {
    * @param {Number}  result.duration  duration of test
    * @param {Boolean} result.passed    true if test has passed, otherwise false
    * @param {Object}  result.retries   informations to spec related retries, e.g. `{ attempts: 0, limit: 0 }`
-   */ onComplete: function () {
+   */
+  onComplete: function () {
     const reportError = new Error('Could not generate Allure report');
     const generation = allure(['generate', 'allure-results', '--clean']);
     return new Promise((resolve, reject) => {
       const generationTimeout = setTimeout(() => reject(reportError), 5000);
-
       generation.on('exit', function (exitCode) {
         clearTimeout(generationTimeout);
-
         if (exitCode !== 0) {
           return reject(reportError);
         }
-
         console.log('Allure report successfully generated');
         resolve();
       });
     });
   },
-
+  //eslint disable next-line
   afterTest: async function (test, context, { error }) {
     if (error) {
       await browser.takeScreenshot();

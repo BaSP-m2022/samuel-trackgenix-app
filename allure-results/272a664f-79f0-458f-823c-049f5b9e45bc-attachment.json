@@ -1,0 +1,4 @@
+{
+  "using": "css selector",
+  "value": "#active > option:nth-child(1)"
+}

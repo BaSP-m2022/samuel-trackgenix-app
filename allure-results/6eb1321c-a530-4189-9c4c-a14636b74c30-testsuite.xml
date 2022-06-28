@@ -1,0 +1,51 @@
+<?xml version='1.0'?>
+<ns2:test-suite xmlns:ns2='urn:model.allure.qatools.yandex.ru' start='1656274439447' stop='1656274440078'>
+    <name>social media links</name>
+    <title>social media links</title>
+    <test-cases>
+        <test-case start='1656274439447' status='failed' stop='1656274440076'>
+            <name>facebook</name>
+            <title>facebook</title>
+            <labels>
+                <label name='language' value='javascript'/>
+                <label name='framework' value='wdio'/>
+                <label name='thread' value='0-0'/>
+            </labels>
+            <parameters>
+                <parameter kind='argument' name='browser' value='chrome-103.0.5060.53'/>
+            </parameters>
+            <steps>
+                <step start='1656274439447' status='passed' stop='1656274439461'>
+                    <name>POST /session/:sessionId/element</name>
+                    <title>POST /session/:sessionId/element</title>
+                    <attachments>
+                        <attachment title='Request' source='3d43b80a-72fb-49cb-8d92-9f886902320c-attachment.json' type='application/json' size='118'/>
+                        <attachment title='Response' source='f4aa91af-d7d1-49ee-adbe-1f157cf10648-attachment.json' type='application/json' size='83'/>
+                    </attachments>
+                    <steps/>
+                </step>
+                <step start='1656274439463' status='passed' stop='1656274439990'>
+                    <name>POST /session/:sessionId/element/23a7cff6-bedb-43f1-9808-90e6e340efd3/click</name>
+                    <title>POST /session/:sessionId/element/23a7cff6-bedb-43f1-9808-90e6e340efd3/click</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1656274439991' status='passed' stop='1656274440076'>
+                    <name>GET /session/:sessionId/screenshot</name>
+                    <title>GET /session/:sessionId/screenshot</title>
+                    <attachments>
+                        <attachment title='Screenshot' source='9be7dece-ca86-4903-b065-0f18f6921787-attachment.png' type='image/png' size='129952'/>
+                    </attachments>
+                    <steps/>
+                </step>
+            </steps>
+            <attachments/>
+            <failure>
+                <message>TypeError: expect(...).open is not a function</message>
+                <stack-trace>TypeError: expect(...).open is not a function
+                    at UserContext.&lt;anonymous> (/Users/juanramos/Desktop/BaSP-week15/samuel-trackgenix-app/test/specs/employee.js:18:32)
+                    at processTicksAndRejections (node:internal/process/task_queues:96:5)</stack-trace>
+            </failure>
+        </test-case>
+    </test-cases>
+</ns2:test-suite>
