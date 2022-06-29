@@ -1,0 +1,4 @@
+{
+  "using": "css selector",
+  "value": "#root > div > div > section > div.modal_modalOverlay__3su40 > div > div > div > div:nth-child(2) > button"
+}

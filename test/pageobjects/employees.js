@@ -15,7 +15,7 @@ class Employees extends Page {
     }
 
     get deleteEmployee () {
-        return $('#root > div > nav > ul > li:nth-child(3) > a');
+        return $('/html/body/div/div/div/section/div/table/tbody/tr[7]/td[6]/button');
     }
 
     get editEmployee () {
@@ -115,19 +115,23 @@ class Employees extends Page {
     }
 
     get deleteEmployeeConfirm () {
-        return $('#root > div > div > section > div > div > div > div > div > div:nth-child(1) > button');
+        return $('/html/body/div/div/div/section/div/div/div/div/div/div[1]/button');
     }
-    
+
     get deleteDone () {
         return $('#root > div > div > section > div > div > div');
     }
-    
+
     get deleteDoneMessage () {
         return $('#root > div > div > section > div > div > div > div > h1');
     }
-    
+
+    get deleteModalCross () {
+        return $('/html/body/div/div/div/section/div/div/div/button');
+    }
+
     get deleteEmployeeCancel () {
-        return $('#root > div > div > section > div > div > div > div > div > div:nth-child(2) > button');
+        return $('/html/body/div/div/div/section/div/div/div/div/div/div[2]/button');
     }
 
     open () {

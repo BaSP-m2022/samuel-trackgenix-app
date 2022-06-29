@@ -1,0 +1,4 @@
+{
+  "using": "css selector",
+  "value": "#root > div > div > section > div > div > div > div > div > div:nth-child(2) > button#root > div > div > section > div > div > div > div > div > div:nth-child(2) > button"
+}
