@@ -7,7 +7,10 @@ describe('open the admin page', () => {
     await expect(adminsPage.adminPage).toBeClickable();
     await adminsPage.adminPage.click();
   });
-  it('should opeen the form to add an admin', async () => {
+  it('to charge the table admins correctly', async () => {
+    await expect(adminsPage.adminTable).toBeDisplayed();
+  });
+  it('should open the form to add an admin', async () => {
     await expect(adminsPage.adminCreateButton).toBeDisplayed();
     await expect(adminsPage.adminCreateButton).toBeClickable();
     await adminsPage.adminCreateButton.click();

@@ -13,6 +13,15 @@ class adminPage extends Page {
   get adminCreateButton() {
     return $('/html/body/div/div/div/section/button');
   }
+  get adminTable() {
+    return $('/html/body/div/div/div/section/section/table');
+  }
+  get adminEditButton() {
+    return $('/html/body/div/div/div/section/section/table/tbody/tr[1]/td[7]/button');
+  }
+  get adminDeleteButton() {
+    return $('/html/body/div/div/div/section/section/table/tbody/tr[1]/td[8]/button');
+  }
 
   /**
    * a method to encapsule automation code to interact with the page
